@@ -1,0 +1,45 @@
+{% extends "shopapp/base.html" %}
+
+{% block title %}Edit{% endblock  %}
+
+{% block body %}
+
+<div class="container">
+    <div class="row mt-28">
+        <div class="col-md-4 offset-md-4">
+            <div class="card">
+                <div class="card-header bg-info text-center text-white ">
+                    <div class="card-title">
+                       Register
+                    </div>
+                </div>
+
+                <div class="card-body mt-2">   
+                    <form action="#" method="POST" novalidate >
+                        {% csrf_token %}                       
+                        {% if form_singup.non_field_errors %}
+                            {% for error in form_singup.non_field_errors %}
+                                <p> {{ error }} </p>
+                            {% endfor %}
+                        {% endif %}
+                
+                        {% for sfm in form_singup %}
+                            <div class="form-group mt-4">
+                                {{sfm.label_tag}} {{sfm}} {{sfm.errors|striptags}}  
+                            </div>
+                            {% comment %} {{sfm.label_tag}} {{sfm}} {{sfm.errors|striptags}} {% endcomment %}
+                        {% endfor %}
+                        <button type="submit" class="btn btn-info mt-4  text-white px-20 ml-20">Register</button>
+                        <p class="px-8 ml-10 mt-4">Already Have an account? <a href="{% url "LoginPage" %}" class="text-blue-500 px-2">login</a></p>
+                        {% comment %} <a href="{% url "LoginPage" %}" class="btn btn-primary mt-2 px-4">Login</a> {% endcomment %}
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock %}

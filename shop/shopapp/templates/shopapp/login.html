@@ -1,0 +1,38 @@
+{% extends "shopapp/base.html" %}
+
+{% block title %}Edit{% endblock  %}
+
+{% block body %}
+<div class="container">
+    <div class="row mt-28">
+        <div class="col-md-4 offset-md-4">
+            <div class="card">
+                <div class="card-header bg-info text-center text-white ">
+                    <div class="card-title">
+                       Login
+                    </div>
+                </div>
+
+                <div class="card-body mt-2">   
+                   <form action="#" method="POST" novalidate>
+                        {% csrf_token %}
+                        {% if form.non_field_errors %}
+                            {% for error in form.non_field_errors %}
+                                <p>{{ error }}</p>
+                            {% endfor %}
+                        {% endif %}
+
+                        {% for sfm in form %}
+                            {{ sfm.label_tag }} {{ sfm }} {{ sfm.errors | striptags }} <br><br>
+                        {% endfor %}
+                        <button type="submit" class="btn btn-info text-white mt-2 px-20 ml-16 ">Login</button>
+                        <p class="px-10 mt-6">Not Registered <a href="{% url "SingUpPage" %}" class="text-blue-500"> Create an account</a></p>
+                        {% comment %} <a href="{% url "SingUpPage" %}" class="btn btn-info mt-4 text-white">Singup</a> {% endcomment %}
+                   </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

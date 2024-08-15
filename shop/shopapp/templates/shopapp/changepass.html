@@ -1,0 +1,38 @@
+{% extends "shopapp/base.html" %}
+
+{% block title %}Change Password{% endblock  %}
+
+{% block body %}
+<div class="container">
+    <div class="row mt-28">
+        <div class="col-md-4 offset-md-4">
+            <div class="card">
+                <div class="card-header bg-info text-center text-white ">
+                    <div class="card-title">
+                       Change Password
+                    </div>
+                </div>
+
+                <div class="card-body mt-2">   
+                   <form action="#" method="POST" novalidate>
+                        {% csrf_token %}
+                        <p class="px-24"> User Login : <b>{{request.user}}</b></p><br>
+                       
+                        {% if changepass.non_field_errors %}
+                            {% for error in changepass.non_field_errors %}
+                                <p>{{ error }}</p>
+                            {% endfor %}
+                        {% endif %}
+
+                        {% for sfm in changepass %}
+                            {{ sfm.label_tag }} {{ sfm }} {{ sfm.errors | striptags }} <br><br>
+                        {% endfor %}
+                        <button type="submit" class="btn btn-primary text-white ">Change Password</button>
+                        
+                   </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock  %}

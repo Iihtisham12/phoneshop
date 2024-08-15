@@ -1,0 +1,44 @@
+{% extends "shopapp/base.html" %}
+
+{% load static %}
+
+{% block title %}Edit{% endblock  %}
+
+{% comment %} {% block css_code %}
+    <link rel="stylesheet" href="{% static "shopapp/css/index.css" %}">
+{% endblock  %}  {% endcomment %}
+
+{% block body %}
+    <form action="#" method="POST" class="shadow-lg m-10">
+        {% csrf_token %}
+        <div class="px-24 py-10 flex ">
+            
+            <div class="mx-20 ">
+                <div class="mb-4">
+                    <label class="fot-semibold">Name</label>
+                </div class="border p-1">
+                <div>{{ expense_form.name }}</div>
+            </div>
+
+            <div class="mx-20">
+                <div class="mb-4">
+                    <label class="fot-semibold">Amount</label>
+                </div class="border p-1">
+                <div>{{ expense_form.amount }}</div>
+            </div>
+
+            <div class="mx-20">
+                <div class="mb-4">
+                    <label class="fot-semibold">Category</label>
+                </div class="border p-1">
+                <div>{{ expense_form.category }}</div>
+            </div>
+
+            <div class="mx-28 mt-10">
+                <button class="bg-green-500 text-white px-5 py-2 font-bold rounded-lg">Edit</button>
+            </div>
+
+        </div>
+
+    </form>
+{% endblock %}
